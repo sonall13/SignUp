@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 class MyDataBase(context : Context ) : SQLiteOpenHelper(context,"mdata.db",null,1){
     override fun onCreate(p0: SQLiteDatabase) {
 
-         var create = "CREATE TABLE mytable (id INTEGER PRIMARY Key autoincrement , name text UNIQUE , username text UNIQUE )"
+         var create = "CREATE TABLE mytable (id INTEGER PRIMARY Key autoincrement , name text UNIQUE , username text UNIQUE , email text UNIQUE , password number UNIQUE)"
          p0.execSQL(create)
 
     }
@@ -16,9 +16,9 @@ class MyDataBase(context : Context ) : SQLiteOpenHelper(context,"mdata.db",null,
 
     }
 
-    fun insertdata(name: String, user: String) {
+    fun insertdata(name: String, user: String, password: String, email: String) {
 
-        var insert = "INSERT INTO mytable (name , username) VALUES ('$name' , '$user')"
+        var insert = "INSERT INTO mytable (name , username) VALUES ('$name' , '$user' ,'$password','$email')"
         writableDatabase.execSQL(insert)
 
 
