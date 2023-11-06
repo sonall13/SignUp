@@ -86,7 +86,7 @@
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -105,7 +105,7 @@
 
         <!--this is the actual edit text which takes the input-->
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_text"
+            android:id="@+id/input_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -147,6 +147,11 @@
             android:textColor="@color/black"
             style="?attr/materialButtonOutlinedStyle"
             android:background="@color/cardview_shadow_end_color"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ss"/>
 
     </LinearLayout>
 
