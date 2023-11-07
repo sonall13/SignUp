@@ -4,6 +4,8 @@ import android.content.Intent
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
@@ -12,6 +14,7 @@ class SignIn : AppCompatActivity() {
     lateinit var signup_btn : MaterialButton
     lateinit var input_user : TextInputEditText
     lateinit var pass : TextInputEditText
+    lateinit var create_acc:Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,29 +24,34 @@ class SignIn : AppCompatActivity() {
         signup_btn = findViewById(R.id.signup_btn)
         input_user = findViewById(R.id.input_user)
         pass = findViewById(R.id.pass)
-
+        create_acc = findViewById(R.id.create_acc)
 
         signup_btn.setOnClickListener {
-            var ab = ""
 
+            Toast.makeText(this, "SIGNING IN.", Toast.LENGTH_SHORT).show()
+            var ab = 0
 
             var select = MyDataBase(this)
 
             var data : Cursor
-            data = select.selecctdata(input_user.text.toString(),pass.text.toString())
+            data = select.
+            selecctdata(input_user.text.toString(),pass.text.toString())
 
             while (data.moveToNext())
             {
-                 ab = data.getString(0)
+                 ab = data.getInt(0)
             }
+            startActivity(Intent(this@SignIn , MainActivity2::class.java).putExtra("name",ab).putExtra("user",input_user.text.toString()))
+            finish()
 
-            startActivity(Intent(this@SignIn , MainActivity2::class.java).putExtra("name",ab))
+        }
+        create_acc.setOnClickListener {
 
-
+            startActivity(Intent(this@SignIn,MainActivity::class.java))
+            finish()
 
         }
 
-
-
     }
+
 }

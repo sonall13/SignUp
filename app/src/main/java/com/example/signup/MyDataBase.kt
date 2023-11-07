@@ -4,6 +4,8 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
+import android.widget.EditText
 
 class MyDataBase(context : Context ) : SQLiteOpenHelper(context,"mdata.db",null,1){
     override fun onCreate(p0: SQLiteDatabase) {
@@ -27,10 +29,10 @@ class MyDataBase(context : Context ) : SQLiteOpenHelper(context,"mdata.db",null,
         }
     }
 
-    fun selecctdata(email: String, pass : String)  : Cursor{
+    fun selecctdata(user: String, pass : String)  : Cursor{
 
 
-        var select = "SELECT * FROM mytable WHERE email = '$email' AND  password = '$pass'"
+        var select = "SELECT * FROM mytable WHERE username = '$user' AND  password = '$pass'"
 
         var cursor :Cursor
 
@@ -41,5 +43,26 @@ class MyDataBase(context : Context ) : SQLiteOpenHelper(context,"mdata.db",null,
 
     }
 
+    fun upadate(user: String, id: Int) {
+        var updat = "UPDATE mytable SET username = '$user' WHERE id='$id' "
+
+        try {
+            writableDatabase.execSQL(updat)
+
+        }catch (e : Exception)
+        {
+            Log.e("====", "upadate: catch", )
+
+        }
+
+    }
+    fun delete( id: Int)
+    {
+        var delet = "DELETE FROME mytable WHERE id = '$id' "
+        try {
+            writableDatabase.execSQL(delet)
+        }catch (e: Exception){
+        }
+    }
 
 }
