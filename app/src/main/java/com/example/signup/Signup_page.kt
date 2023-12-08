@@ -3,12 +3,11 @@ package com.example.signup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
-class MainActivity : AppCompatActivity() {
+class Signup_page : AppCompatActivity() {
 
 
     lateinit var submit : MaterialButton
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_signup_page)
 
         submit = findViewById(R.id.signup_btn)
         input_name = findViewById(R.id.input_name)
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
             data.insertdata(input_name.text.toString(),input_user.text.toString(),password.text.toString(),email.text.toString())
 
-            startActivity(Intent(this@MainActivity,SignIn::class.java))
+            startActivity(Intent(this@Signup_page,Home_page::class.java))
             finish()
 
         }

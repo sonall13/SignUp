@@ -13,6 +13,10 @@ class MyDataBase(context : Context ) : SQLiteOpenHelper(context,"mdata.db",null,
          var create = "CREATE TABLE mytable (id INTEGER PRIMARY Key autoincrement , name text UNIQUE , username text UNIQUE  , password text UNIQUE , email text UNIQUE)"
          p0.execSQL(create)
 
+
+        var fetchdata = "CREATE TABLE fetchdata(id INTEGER PRIMARY KEY autoincrement , name TEXT UNIQUE , contact NUMBER UNIQUE , email TEXT UNIQUE)"
+           p0.execSQL(fetchdata)
+
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
@@ -35,34 +39,31 @@ class MyDataBase(context : Context ) : SQLiteOpenHelper(context,"mdata.db",null,
         var select = "SELECT * FROM mytable WHERE username = '$user' AND  password = '$pass'"
 
         var cursor :Cursor
-
         cursor = readableDatabase.rawQuery(select,null)
-
         return cursor
 
-
     }
 
-    fun upadate(user: String, id: Int) {
-        var updat = "UPDATE mytable SET username = '$user' WHERE id='$id' "
-
-        try {
-            writableDatabase.execSQL(updat)
-
-        }catch (e : Exception)
-        {
-            Log.e("====", "upadate: catch", )
-
-        }
-
-    }
-    fun delete( id: Int)
-    {
-        var delet = "DELETE FROME mytable WHERE id = '$id' "
-        try {
-            writableDatabase.execSQL(delet)
-        }catch (e: Exception){
-        }
-    }
+//    fun upadate(user: String, id: Int) {
+//        var updat = "UPDATE mytable SET username = '$user' WHERE id='$id' "
+//
+//        try {
+//            writableDatabase.execSQL(updat)
+//
+//        }catch (e : Exception)
+//        {
+//            Log.e("====", "upadate: catch", )
+//
+//        }
+//
+//    }
+//    fun delete( id: Int)
+//    {
+//        var delet = "DELETE FROME mytable WHERE id = '$id' "
+//        try {
+//            writableDatabase.execSQL(delet)
+//        }catch (e: Exception){
+//        }
+//    }
 
 }

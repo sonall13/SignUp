@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
-class SignIn : AppCompatActivity() {
+class Login_page : AppCompatActivity() {
 
     lateinit var signup_btn : MaterialButton
     lateinit var input_user : TextInputEditText
@@ -19,7 +19,7 @@ class SignIn : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.activity_login_page)
 
         signup_btn = findViewById(R.id.signup_btn)
         input_user = findViewById(R.id.input_user)
@@ -41,13 +41,13 @@ class SignIn : AppCompatActivity() {
             {
                  ab = data.getInt(0)
             }
-            startActivity(Intent(this@SignIn , MainActivity2::class.java).putExtra("name",ab).putExtra("user",input_user.text.toString()))
+            startActivity(Intent(this@Login_page , Home_page::class.java).putExtra("name",ab).putExtra("user",input_user.text.toString()))
             finish()
 
         }
         create_acc.setOnClickListener {
 
-            startActivity(Intent(this@SignIn,MainActivity::class.java))
+            startActivity(Intent(this@Login_page,Signup_page::class.java))
             finish()
 
         }
