@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".add_contact">
+
+
+    <ImageView
+        android:id="@+id/profileIv"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:background="#c0c0c0"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/baseline_person_24"/>
+
+    <EditText
+        android:id="@+id/firstNameEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileIv"
+        android:layout_marginTop="40dp"
+        android:hint="First Name"
+        android:textColor="#000"
+        android:inputType="textPersonName"
+        android:textColorHint="#c5c5c5"/>
+
+
+
+    <EditText
+        android:id="@+id/phoneNumberEt"
+        android:background="#fff"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:textColorHint="#c5c5c5"
+        android:textColor="#000"
+        android:hint="Phone Number (Mobile)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firstNameEt"
+        android:inputType="phone"/>
+
+
+    <EditText
+        android:id="@+id/emailEt"
+        android:background="#fff"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textColorHint="#c5c5c5"
+        android:textColor="#000"
+        android:hint="Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phoneNumberEt"
+        android:inputType="textEmailAddress"/>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/savefab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/baseline_done_24" />
+
+
+</RelativeLayout>

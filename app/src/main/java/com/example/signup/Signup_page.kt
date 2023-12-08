@@ -17,6 +17,7 @@ class Signup_page : AppCompatActivity() {
     lateinit var email : TextInputEditText
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup_page)

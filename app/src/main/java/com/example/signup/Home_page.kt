@@ -1,5 +1,6 @@
 package com.example.signup
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
@@ -34,8 +35,23 @@ class Home_page : AppCompatActivity() {
 //    blanklist.add("nbhg")
 //    blanklist.add("nbhg")
 
-    var contact_adapter = Myadpter(this,blanklist)
-    contact_list.adapter = contact_adapter
+//    var contact_adapter = Myadpter(this)
+//    contact_list.adapter = contact_adapter
+
+     addbtn.setOnClickListener {
+
+//         var name = intent.getIntExtra("name",0)
+//      var  user = intent.getStringExtra("user").toString()
+//        txt.setText(name.toString())
+
+
+
+         val db = MyDataBase(this)
+
+            var intent = Intent(this@Home_page,add_contact::class.java)
+         startActivity(intent)
+
+     }
 
 
    }

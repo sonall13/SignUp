@@ -16,6 +16,7 @@ class Login_page : AppCompatActivity() {
     lateinit var pass : TextInputEditText
     lateinit var create_acc:Button
 
+    var blenkllist = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,7 @@ class Login_page : AppCompatActivity() {
             Toast.makeText(this, "SIGNING IN.", Toast.LENGTH_SHORT).show()
             var ab = 0
 
-            var select = MyDataBase(this)
+            var select = MyDataBase(this,blenkllist)
 
             var data : Cursor
             data = select.
