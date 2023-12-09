@@ -1,6 +1,7 @@
 package com.example.signup
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,8 +17,13 @@ class Login_page : AppCompatActivity() {
     lateinit var pass : TextInputEditText
     lateinit var create_acc:Button
 
-    var blenkllist = ArrayList<String>()
 
+    companion object
+    {
+        lateinit var sp: SharedPreferences
+        lateinit var edit : SharedPreferences.Editor
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
@@ -27,23 +33,28 @@ class Login_page : AppCompatActivity() {
         pass = findViewById(R.id.pass)
         create_acc = findViewById(R.id.create_acc)
 
+
+        sp=getSharedPreferences("my", MODE_PRIVATE)
+        edit = sp.edit()
+
         signup_btn.setOnClickListener {
 
-            Toast.makeText(this, "SIGNING IN.", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "SIGNING IN.", Toast.LENGTH_SHORT).show()
             var ab = 0
-
-            var select = MyDataBase(this,blenkllist)
+            var select = MyDataBase(this)
 
             var data : Cursor
-            data = select.
-            selecctdata(input_user.text.toString(),pass.text.toString())
+            data = select.selecctdata(input_user.text.toString(),pass.text.toString())
 
             while (data.moveToNext())
             {
                  ab = data.getInt(0)
+                edit.putInt("id",ab)
+                edit.apply()
+                startActivity(Intent(this@Login_page , Home_page::class.java).putExtra("name",ab).putExtra("user",input_user.text.toString()))
+                finish()
             }
-            startActivity(Intent(this@Login_page , Home_page::class.java).putExtra("name",ab).putExtra("user",input_user.text.toString()))
-            finish()
+
 
         }
         create_acc.setOnClickListener {

@@ -33,17 +33,6 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
         }
     }
 
-    fun dataadd(name: String, contact: String, email: String) {
-
-        var insert = "INSERT INTO fetchdata(name , contact , email) VALUES ('$name' ,'$contact' ,'$email')"
-        try {
-            writableDatabase.execSQL(insert)
-
-        }catch (e : Exception) {
-
-        }
-    }
-
     fun selecctdata(user: String, pass : String)  : Cursor{
 
 
@@ -54,15 +43,25 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
         return cursor
 
     }
+    fun dataadd(id: Int, name: String, contact: String, email: String) {
 
-    fun addeddata(name: String, contact : String)  : Cursor{
+        var insert = "INSERT INTO fetchdata(name , contact , email) VALUES ('$name' ,'$contact' ,'$email')"
+        try {
+            writableDatabase.execSQL(insert)
+
+        }catch (e : Exception) {
+
+        }
+    }
+
+    fun addeddata(id:Int)  : Cursor{
 
 
-        var select = "SELECT * FROM mytable WHERE username = '$name' AND  password = '$contact'"
+        var selectt = "SELECT * FROM fetchdata WHERE id = '$id' "
 
-        var cursor :Cursor
-        cursor = readableDatabase.rawQuery(select,null)
-        return cursor
+        var cursorr :Cursor
+        cursorr = readableDatabase.rawQuery(selectt,null)
+        return cursorr
 
     }
 
@@ -78,7 +77,7 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
 //            Log.e("====", "upadate: catch", )
 //
 //        }
-//
+
 //    }
 //    fun delete( id: Int)
 //    {

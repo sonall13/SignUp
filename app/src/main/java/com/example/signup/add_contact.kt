@@ -16,9 +16,6 @@ class add_contact : AppCompatActivity() {
     lateinit var emailEt : EditText
     lateinit var savefab : FloatingActionButton
 
-    var blanklist = ArrayList<String>()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_contact)
@@ -30,16 +27,16 @@ class add_contact : AppCompatActivity() {
         emailEt =findViewById(R.id.emailEt)
         savefab =findViewById(R.id.savefab)
 
-
+        var id=Login_page.sp.getInt("id",99)
 
         savefab.setOnClickListener {
 
-            var data = MyDataBase(this,blanklist)
-            data.dataadd(firstNameEt.text.toString(),phoneNumberEt.text.toString(),emailEt.text.toString())
+            var data = MyDataBase(this)
+            data.dataadd(id,firstNameEt.text.toString(),phoneNumberEt.text.toString(),emailEt.text.toString())
 
             Toast.makeText(this, "data added", Toast.LENGTH_SHORT).show()
 
-            var intrnt = Intent(this@add_contact,Home_page::class.java)
+            var intrnt = Intent(this@add_contact,Home_page::class.java).putExtra("namee",phoneNumberEt.text.toString()).putExtra("userr",phoneNumberEt.text.toString())
             startActivity(intrnt)
             finish()
 

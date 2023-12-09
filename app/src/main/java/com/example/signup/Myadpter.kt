@@ -5,10 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.google.android.material.textfield.TextInputEditText
 
-class Myadpter(var homePage: Home_page, var blanklist: ArrayList<String>) : BaseAdapter() {
+class Myadpter(var homePage: Home_page,var  numarray: ArrayList<String>, ) : BaseAdapter() {
     override fun getCount(): Int {
-        return blanklist.size
+        return numarray.size
     }
 
     override fun getItem(p0: Int): Any {
@@ -24,10 +25,9 @@ class Myadpter(var homePage: Home_page, var blanklist: ArrayList<String>) : Base
         var name : TextView
 
         var forcontact = LayoutInflater.from(homePage).inflate(R.layout.forcontact,p2,false)
+
         name=forcontact.findViewById(R.id.name)
-
-        name.setText(blanklist[p0])
-
+        name.setText(numarray[p0])
 
         return forcontact
 
