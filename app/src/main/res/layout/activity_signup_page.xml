@@ -140,8 +140,7 @@
             android:textStyle="bold|italic"
             android:textSize="20dp"
             android:textColor="@color/black"
-            style="?attr/materialButtonOutlinedStyle"
-            android:background="@color/cardview_shadow_end_color"/>
+            android:background="@color/black"/>
     </LinearLayout>
 
 

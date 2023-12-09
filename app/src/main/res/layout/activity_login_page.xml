@@ -38,6 +38,7 @@
             <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_user"
+                android:background="@drawable/strok"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType=""
@@ -63,6 +64,7 @@
             <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pass"
+                android:background="@drawable/strok"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -87,7 +89,6 @@
             android:textStyle="bold|italic"
             android:textSize="20dp"
             android:textColor="@color/black"
-            style="?attr/buttonBarNeutralButtonStyle"
             android:background="#303BDF"/>
 
         <TextView
