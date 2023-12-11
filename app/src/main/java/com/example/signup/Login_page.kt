@@ -42,14 +42,13 @@ class Login_page : AppCompatActivity() {
 //            Toast.makeText(this, "SIGNING IN.", Toast.LENGTH_SHORT).show()
             var ab = 0
             var select = MyDataBase(this)
-
             var data : Cursor
             data = select.selecctdata(input_user.text.toString(),pass.text.toString())
 
             while (data.moveToNext())
             {
-                 ab = data.getInt(0)
-                edit.putInt("id",ab)
+                 ab = data.getInt(1)
+                edit.putInt("my",ab)
                 edit.apply()
                 startActivity(Intent(this@Login_page , Home_page::class.java).putExtra("name",ab).putExtra("user",input_user.text.toString()))
                 finish()

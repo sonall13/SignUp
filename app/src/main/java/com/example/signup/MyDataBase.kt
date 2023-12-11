@@ -54,7 +54,7 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
         }
     }
 
-    fun addeddata(id:Int)  : Cursor{
+    fun addeddata(id:Int) : Cursor{
 
 
         var selectt = "SELECT * FROM fetchdata WHERE id = '$id' "

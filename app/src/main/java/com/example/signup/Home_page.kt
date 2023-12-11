@@ -34,26 +34,27 @@ class Home_page : AppCompatActivity() {
     addbtn = findViewById(R.id.addbtn)
 
 
-        var id= Login_page.sp.getInt("id",99)
+        var id= Login_page.sp.getInt("my",99)
         var contact = MyDataBase(this)
 
-        var cursor1 : Cursor
-         cursor1= contact.addeddata(id)
+        var cursorr : Cursor
+         cursorr= contact.addeddata(id)
 
 //        numarray.clear()
-        while (cursor1.moveToNext()){
-            numarray.add(cursor1.getString(1))
+        while (cursorr.moveToNext()){
+
+            numarray.add(cursorr.getString(1))
+
         }
 
         var contact_adapter = Myadpter(this, numarray)
         contact_list.adapter = contact_adapter
 
         addbtn.setOnClickListener {
+
             var intent = Intent(this@Home_page,add_contact::class.java)
             startActivity(intent)
         }
-
-
 
    }
 }

@@ -1,6 +1,7 @@
 package com.example.signup
 
 import android.content.Intent
+import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -27,7 +28,9 @@ class add_contact : AppCompatActivity() {
         emailEt =findViewById(R.id.emailEt)
         savefab =findViewById(R.id.savefab)
 
-        var id=Login_page.sp.getInt("id",99)
+
+        var id=Login_page.sp.getInt("my",99)
+
 
         savefab.setOnClickListener {
 
@@ -36,12 +39,11 @@ class add_contact : AppCompatActivity() {
 
             Toast.makeText(this, "data added", Toast.LENGTH_SHORT).show()
 
-            var intrnt = Intent(this@add_contact,Home_page::class.java).putExtra("namee",phoneNumberEt.text.toString()).putExtra("userr",phoneNumberEt.text.toString())
-            startActivity(intrnt)
-            finish()
+                var intrnt = Intent(this@add_contact,Home_page::class.java).putExtra("namee",firstNameEt.text.toString()).putExtra("userr",phoneNumberEt.text.toString())
+                startActivity(intrnt)
+                finish()
 
         }
-
 
 
 
