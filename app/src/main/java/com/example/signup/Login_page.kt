@@ -12,7 +12,7 @@ import com.google.android.material.textfield.TextInputEditText
 
 class Login_page : AppCompatActivity() {
 
-    lateinit var lohin_btn : MaterialButton
+    lateinit var login_btn : MaterialButton
     lateinit var input_user : TextInputEditText
     lateinit var pass : TextInputEditText
     lateinit var create_acc:Button
@@ -28,7 +28,7 @@ class Login_page : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
 
-        lohin_btn = findViewById(R.id.lohin_btn)
+        login_btn = findViewById(R.id.login_btn)
         input_user = findViewById(R.id.input_user)
         pass = findViewById(R.id.pass)
         create_acc = findViewById(R.id.create_acc)
@@ -37,7 +37,7 @@ class Login_page : AppCompatActivity() {
         sp=getSharedPreferences("my", MODE_PRIVATE)
         edit = sp.edit()
 
-        lohin_btn.setOnClickListener {
+        login_btn.setOnClickListener {
 
 //            Toast.makeText(this, "SIGNING IN.", Toast.LENGTH_SHORT).show()
             var ab = 0

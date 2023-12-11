@@ -13,8 +13,7 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
          var create = "CREATE TABLE mytable (id INTEGER PRIMARY Key autoincrement , name text UNIQUE , username text UNIQUE  , email text UNIQUE , password text UNIQUE )"
          p0.execSQL(create)
 
-
-        var fetchdata = "CREATE TABLE fetchdata(id INTEGER , name TEXT UNIQUE , contact NUMBER UNIQUE , email TEXT UNIQUE)"
+         var fetchdata = "CREATE TABLE fetchdata(id INTEGER , name TEXT UNIQUE , contact NUMBER UNIQUE , email TEXT UNIQUE)"
            p0.execSQL(fetchdata)
 
     }
@@ -27,7 +26,6 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
         var insert = "INSERT INTO mytable (name , username , password , email) VALUES ('$name' , '$user' ,'$password' ,'$email')"
         try {
             writableDatabase.execSQL(insert)
-
         }catch (e : Exception) {
 
         }

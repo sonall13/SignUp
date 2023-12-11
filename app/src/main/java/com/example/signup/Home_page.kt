@@ -32,7 +32,7 @@ class Home_page : AppCompatActivity() {
 //        numarray.add("df")
 
     contact_list = findViewById(R.id.contact_list)
-    addbtn = findViewById(R.id.addbtn)
+        addbtn = findViewById(R.id.addbtn)
 
         numarray.clear()
         conarray.clear()

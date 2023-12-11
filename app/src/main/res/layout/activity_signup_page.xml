@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".Signup_page">
-
 
 
     <TextView
@@ -14,7 +14,7 @@
         android:textSize="50dp"
         android:text="SIGN UP"
         android:layout_marginLeft="110dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_marginTop="30dp"
         />
 
@@ -33,14 +33,16 @@
             android:layout_marginTop="64dp"
             android:layout_marginEnd="32dp"
             app:startIconDrawable="@drawable/name"
-            app:startIconTint="#000000"
-            app:hintTextColor="@color/black"
+            app:startIconTint="@color/white"
+            android:textColorHint="@color/white"
             android:hint="Enter name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_name"
                 android:layout_width="match_parent"
+                android:background="@drawable/strok"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:inputType="textCapWords" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -53,13 +55,16 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
             app:startIconDrawable="@drawable/user"
-            app:startIconTint="#000000"
+            app:startIconTint="@color/white"
+            android:textColorHint="@color/white"
             android:hint="Enter user name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/strok"
+                android:textColor="@color/white"
                 android:inputType=""
                 />
 
@@ -73,13 +78,16 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
             app:startIconDrawable="@drawable/email"
-            app:startIconTint="#000000"
+            app:startIconTint="@color/white"
+            android:textColorHint="@color/white"
             android:hint="Enter email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/strok"
+                android:textColor="@color/white"
                 android:inputType="text"
                 />
 
@@ -93,14 +101,19 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
             app:startIconDrawable="@drawable/padlock"
-            app:startIconTint="#000000"
+            app:startIconTint="@color/white"
             app:endIconMode="password_toggle"
+            app:endIconTint="@color/white"
+            android:textColorHint="@color/white"
             android:hint="Enter password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/strok"
+            android:textColor="@color/white"
+            android:inputType="textPassword"
             />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -113,7 +126,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
             app:startIconDrawable="@drawable/conpass"
-            app:startIconTint="#000000"
+            app:startIconTint="@color/white"
+            app:endIconTint="@color/white"
+            android:textColorHint="@color/white"
             app:endIconMode="password_toggle"
             android:hint="confirm password">
 
@@ -121,6 +136,9 @@
                 android:id="@+id/input_conpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:background="@drawable/strok"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
