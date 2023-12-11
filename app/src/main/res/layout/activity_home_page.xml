@@ -14,7 +14,7 @@
         android:background="@color/white"
         />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/addbtn"
         android:layout_width="60dp"
         android:layout_height="60dp"

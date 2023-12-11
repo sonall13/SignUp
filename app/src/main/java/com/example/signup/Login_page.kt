@@ -12,7 +12,7 @@ import com.google.android.material.textfield.TextInputEditText
 
 class Login_page : AppCompatActivity() {
 
-    lateinit var signup_btn : MaterialButton
+    lateinit var lohin_btn : MaterialButton
     lateinit var input_user : TextInputEditText
     lateinit var pass : TextInputEditText
     lateinit var create_acc:Button
@@ -28,7 +28,7 @@ class Login_page : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
 
-        signup_btn = findViewById(R.id.signup_btn)
+        lohin_btn = findViewById(R.id.lohin_btn)
         input_user = findViewById(R.id.input_user)
         pass = findViewById(R.id.pass)
         create_acc = findViewById(R.id.create_acc)
@@ -37,7 +37,7 @@ class Login_page : AppCompatActivity() {
         sp=getSharedPreferences("my", MODE_PRIVATE)
         edit = sp.edit()
 
-        signup_btn.setOnClickListener {
+        lohin_btn.setOnClickListener {
 
 //            Toast.makeText(this, "SIGNING IN.", Toast.LENGTH_SHORT).show()
             var ab = 0
@@ -47,13 +47,13 @@ class Login_page : AppCompatActivity() {
 
             while (data.moveToNext())
             {
-                 ab = data.getInt(1)
-                edit.putInt("my",ab)
+                 ab = data.getInt(0)
+                edit.putInt("id",ab)
                 edit.apply()
-                startActivity(Intent(this@Login_page , Home_page::class.java).putExtra("name",ab).putExtra("user",input_user.text.toString()))
+
+                startActivity(Intent(this@Login_page ,Home_page::class.java))
                 finish()
             }
-
 
         }
         create_acc.setOnClickListener {

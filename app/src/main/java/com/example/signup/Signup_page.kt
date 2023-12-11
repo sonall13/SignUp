@@ -30,10 +30,11 @@ class Signup_page : AppCompatActivity() {
 
 
         submit.setOnClickListener {
-            Toast.makeText(this, "DATA INSERTED", Toast.LENGTH_SHORT).show()
+
+//            Toast.makeText(this, "DATA INSERTED", Toast.LENGTH_SHORT).show()
             var data = MyDataBase(this)
 
-            data.insertdata(input_name.text.toString(),input_user.text.toString(),password.text.toString(),email.text.toString())
+            data.insertdata(input_name.text.toString(),input_user.text.toString(),email.text.toString(),password.text.toString())
 
             startActivity(Intent(this@Signup_page,Home_page::class.java))
             finish()

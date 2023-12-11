@@ -11,20 +11,20 @@ class Splashscreen : AppCompatActivity() {
 
     companion object {
 
-        lateinit var sp: SharedPreferences
-        lateinit var edit: SharedPreferences.Editor
+        lateinit var spp: SharedPreferences
+        lateinit var editt: SharedPreferences.Editor
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splashscreen)
 
-        sp = getSharedPreferences("status" , MODE_PRIVATE)
-        edit= sp.edit()
+        spp = getSharedPreferences("status" , MODE_PRIVATE)
+        editt= spp.edit()
 
 
         Handler(Looper.getMainLooper()).postDelayed({
 
-            if(sp.getBoolean("status" , false)){
+            if(spp.getBoolean("status" , false)){
 
                 startActivity(Intent(this@Splashscreen,Home_page::class.java))
                 finish()

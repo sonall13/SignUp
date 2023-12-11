@@ -10,11 +10,11 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(p0: SQLiteDatabase) {
 
-         var create = "CREATE TABLE mytable (id INTEGER PRIMARY Key autoincrement , name text UNIQUE , username text UNIQUE  , password text UNIQUE , email text UNIQUE)"
+         var create = "CREATE TABLE mytable (id INTEGER PRIMARY Key autoincrement , name text UNIQUE , username text UNIQUE  , email text UNIQUE , password text UNIQUE )"
          p0.execSQL(create)
 
 
-        var fetchdata = "CREATE TABLE fetchdata(id INTEGER PRIMARY Key, name TEXT UNIQUE , contact NUMBER UNIQUE , email TEXT UNIQUE)"
+        var fetchdata = "CREATE TABLE fetchdata(id INTEGER , name TEXT UNIQUE , contact NUMBER UNIQUE , email TEXT UNIQUE)"
            p0.execSQL(fetchdata)
 
     }
@@ -37,17 +37,21 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
 
 
         var select = "SELECT * FROM mytable WHERE username = '$user' AND  password = '$pass'"
-
         var cursor :Cursor
         cursor = readableDatabase.rawQuery(select,null)
         return cursor
 
     }
+
+
+
+
+
     fun dataadd(id: Int, name: String, contact: String, email: String) {
 
-        var insert = "INSERT INTO fetchdata(name , contact , email) VALUES ('$name' ,'$contact' ,'$email')"
+        var insertt = "INSERT INTO fetchdata(id,name , contact , email) VALUES ('$id','$name' ,'$contact' ,'$email')"
         try {
-            writableDatabase.execSQL(insert)
+            writableDatabase.execSQL(insertt)
 
         }catch (e : Exception) {
 

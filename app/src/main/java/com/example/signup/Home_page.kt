@@ -4,7 +4,7 @@ import android.content.Intent
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.ListView
 
 class Home_page : AppCompatActivity() {
@@ -18,8 +18,9 @@ class Home_page : AppCompatActivity() {
 
 
     lateinit var contact_list : ListView
-    lateinit var addbtn : ImageButton
+    lateinit var addbtn : ImageView
     var numarray = ArrayList<String>()
+    var conarray = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -33,21 +34,24 @@ class Home_page : AppCompatActivity() {
     contact_list = findViewById(R.id.contact_list)
     addbtn = findViewById(R.id.addbtn)
 
+        numarray.clear()
+        conarray.clear()
 
-        var id= Login_page.sp.getInt("my",99)
+        var id= Login_page.sp.getInt("id",1)
         var contact = MyDataBase(this)
 
-        var cursorr : Cursor
-         cursorr= contact.addeddata(id)
+        var cursor1 : Cursor
+         cursor1= contact.addeddata(id)
 
-//        numarray.clear()
-        while (cursorr.moveToNext()){
 
-            numarray.add(cursorr.getString(1))
+        while (cursor1.moveToNext()){
+
+            numarray.add(cursor1.getString(1))
+            conarray.add(cursor1.getString(2))
 
         }
 
-        var contact_adapter = Myadpter(this, numarray)
+        var contact_adapter = Myadpter(this, numarray,conarray)
         contact_list.adapter = contact_adapter
 
         addbtn.setOnClickListener {

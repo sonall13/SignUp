@@ -4,6 +4,7 @@ import android.content.Intent
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
@@ -15,11 +16,12 @@ class add_contact : AppCompatActivity() {
     lateinit var firstNameEt : EditText
     lateinit var phoneNumberEt : EditText
     lateinit var emailEt : EditText
-    lateinit var savefab : FloatingActionButton
+    lateinit var savefab : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_contact)
+
 
 
         profileIv =findViewById(R.id.profileIv)
@@ -28,23 +30,20 @@ class add_contact : AppCompatActivity() {
         emailEt =findViewById(R.id.emailEt)
         savefab =findViewById(R.id.savefab)
 
-
-        var id=Login_page.sp.getInt("my",99)
-
+        var id=Login_page.sp.getInt("id",1)
 
         savefab.setOnClickListener {
 
-            var data = MyDataBase(this)
-            data.dataadd(id,firstNameEt.text.toString(),phoneNumberEt.text.toString(),emailEt.text.toString())
+            var add = MyDataBase(this)
+            add.dataadd(id,firstNameEt.text.toString(),phoneNumberEt.text.toString(),emailEt.text.toString())
 
-            Toast.makeText(this, "data added", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "data added", Toast.LENGTH_SHORT).show()
 
                 var intrnt = Intent(this@add_contact,Home_page::class.java).putExtra("namee",firstNameEt.text.toString()).putExtra("userr",phoneNumberEt.text.toString())
                 startActivity(intrnt)
                 finish()
 
         }
-
 
 
     }
