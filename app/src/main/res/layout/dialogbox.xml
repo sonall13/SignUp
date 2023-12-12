@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+
+    <EditText
+        android:id="@+id/editname"
+        android:layout_marginTop="40dp"
+        android:padding="10dp"
+        android:background="@drawable/strok"
+        android:textColorHint="#c5c5c5"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="20dp"
+        android:hint="Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"/>
+
+
+    <EditText
+        android:id="@+id/editcontact"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="@drawable/strok"
+        android:textColorHint="#c5c5c5"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="20dp"
+        android:hint="Phone Number (Mobile)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editname"
+        android:inputType="phone"/>
+
+
+    <EditText
+        android:id="@+id/editemail"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/strok"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:textColorHint="#c5c5c5"
+        android:textColor="@color/white"
+        android:hint="Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editcontact"
+        android:inputType="textEmailAddress"/>
+
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:text="update"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/editemail"
+        android:layout_marginLeft="250dp"
+        />
+
+    <Button
+        android:id="@+id/dialogcancel"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/editemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:text="cancel"
+        android:layout_marginLeft="40dp"
+        />
+
 
 </RelativeLayout>
