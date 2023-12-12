@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.button.MaterialButton
@@ -18,12 +19,7 @@ class Login_page : AppCompatActivity() {
     lateinit var create_acc:Button
 
 
-    companion object
-    {
-        lateinit var sp: SharedPreferences
-        lateinit var edit : SharedPreferences.Editor
 
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
@@ -34,8 +30,7 @@ class Login_page : AppCompatActivity() {
         create_acc = findViewById(R.id.create_acc)
 
 
-        sp=getSharedPreferences("my", MODE_PRIVATE)
-        edit = sp.edit()
+
 
         login_btn.setOnClickListener {
 
@@ -48,9 +43,12 @@ class Login_page : AppCompatActivity() {
             while (data.moveToNext())
             {
                  ab = data.getInt(0)
-                edit.putInt("id",ab)
-                edit.apply()
+                Splashscreen.edit.putInt("id",ab)
+                Splashscreen.edit.apply()
 
+                Splashscreen.edit.putBoolean("status",true)
+                Splashscreen.edit.apply()
+                Log.e("====", "onCreate: ${Splashscreen.sp.getBoolean("status",false)}", )
                 startActivity(Intent(this@Login_page ,Home_page::class.java))
                 finish()
             }

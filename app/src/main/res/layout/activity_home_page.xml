@@ -7,7 +7,18 @@
     tools:context=".Home_page">
 
 
+    <ImageView
+        android:id="@+id/logouticon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/logouticon"
+        android:backgroundTint="@color/white"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="20dp"
+        />
+
     <ListView
+        android:layout_below="@+id/logouticon"
         android:id="@+id/contact_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -17,6 +17,7 @@ class add_contact : AppCompatActivity() {
     lateinit var phoneNumberEt : EditText
     lateinit var emailEt : EditText
     lateinit var savefab : Button
+    lateinit var cancel : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +30,9 @@ class add_contact : AppCompatActivity() {
         phoneNumberEt =findViewById(R.id.phoneNumberEt)
         emailEt =findViewById(R.id.emailEt)
         savefab =findViewById(R.id.savefab)
+        cancel =findViewById(R.id.cancel)
 
-        var id=Login_page.sp.getInt("id",1)
+        var id=Splashscreen.sp.getInt("id",1)
 
         savefab.setOnClickListener {
 
@@ -42,6 +44,13 @@ class add_contact : AppCompatActivity() {
                 var intrnt = Intent(this@add_contact,Home_page::class.java).putExtra("namee",firstNameEt.text.toString()).putExtra("userr",phoneNumberEt.text.toString())
                 startActivity(intrnt)
                 finish()
+
+        }
+        cancel.setOnClickListener {
+
+            var intent = Intent(this@add_contact,Home_page::class.java)
+            startActivity(intent)
+            finish()
 
         }
 

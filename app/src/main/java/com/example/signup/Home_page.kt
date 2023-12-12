@@ -19,6 +19,8 @@ class Home_page : AppCompatActivity() {
 
     lateinit var contact_list : ListView
     lateinit var addbtn : ImageView
+    lateinit var logouticon : ImageView
+
     var numarray = ArrayList<String>()
     var conarray = ArrayList<String>()
 
@@ -26,18 +28,15 @@ class Home_page : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_home_page)
 
-//        numarray.add("df")
-//        numarray.add("df")
-//        numarray.add("df")
-//        numarray.add("df")
 
     contact_list = findViewById(R.id.contact_list)
         addbtn = findViewById(R.id.addbtn)
+        logouticon = findViewById(R.id.logouticon)
 
         numarray.clear()
         conarray.clear()
 
-        var id= Login_page.sp.getInt("id",1)
+        var id= Splashscreen.sp.getInt("id",1)
         var contact = MyDataBase(this)
 
         var cursor1 : Cursor
@@ -58,6 +57,17 @@ class Home_page : AppCompatActivity() {
 
             var intent = Intent(this@Home_page,add_contact::class.java)
             startActivity(intent)
+            finish()
+        }
+
+        logouticon.setOnClickListener {
+
+//            Splashscreen.edit.putBoolean("status",false)
+//            Splashscreen.edit.apply()
+
+            var intent = Intent(this@Home_page,Login_page::class.java)
+            startActivity(intent)
+            finish()
         }
 
    }
