@@ -18,8 +18,6 @@ class Login_page : AppCompatActivity() {
     lateinit var pass : TextInputEditText
     lateinit var create_acc:Button
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
@@ -28,7 +26,6 @@ class Login_page : AppCompatActivity() {
         input_user = findViewById(R.id.input_user)
         pass = findViewById(R.id.pass)
         create_acc = findViewById(R.id.create_acc)
-
 
 
 
@@ -48,11 +45,10 @@ class Login_page : AppCompatActivity() {
 
                 Splashscreen.edit.putBoolean("status",true)
                 Splashscreen.edit.apply()
-                Log.e("====", "onCreate: ${Splashscreen.sp.getBoolean("status",false)}", )
+                Log.e("====", "onCreate: ${Splashscreen.sp.getBoolean("status",false)}" )
                 startActivity(Intent(this@Login_page ,Home_page::class.java))
                 finish()
             }
-
         }
         create_acc.setOnClickListener {
 

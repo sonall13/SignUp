@@ -1,6 +1,7 @@
 package com.example.signup
 
 import android.app.Dialog
+import android.database.Cursor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +14,13 @@ import android.widget.TextView
 class Myadpter(
     var homePage: Home_page,
     var numarray: ArrayList<String>,
-   var conarray: ArrayList<String>
+    var conarray: ArrayList<String>,
+   var  emailarray: ArrayList<String>
 ) : BaseAdapter() {
     override fun getCount(): Int {
         return numarray.size
         return conarray.size
+        return emailarray.size
     }
 
     override fun getItem(p0: Int): Any {
@@ -35,11 +38,7 @@ class Myadpter(
         var editt : ImageView
         var delete : ImageView
 
-        var editname : EditText
-        var editcontact : EditText
-        var editemail : EditText
-        var update : Button
-        var dialogcancel : Button
+
 
         var forcontact = LayoutInflater.from(homePage).inflate(R.layout.forcontact,p2,false)
 
@@ -50,11 +49,6 @@ class Myadpter(
 
         var dialog = Dialog(homePage)
 
-//        editname=dialog.findViewById(R.id.editname)
-//        editcontact=dialog.findViewById(R.id.editcontact)
-//        editemail=dialog.findViewById(R.id.editemail)
-//        update=dialog.findViewById(R.id.update)
-//        dialogcancel=dialog.findViewById(R.id.dialogcancel)
 
 
 
@@ -64,10 +58,45 @@ class Myadpter(
 //            dialog.setCancelable(false)
             dialog.setContentView(R.layout.dialogbox)
 
+            var editname : TextView
+            var editcontact : TextView
+            var editemail : TextView
+            var update : Button
 
+
+            editname=dialog.findViewById(R.id.editname)
+            editcontact=dialog.findViewById(R.id.editcontact)
+            editemail=dialog.findViewById(R.id.editemail)
+            update=dialog.findViewById(R.id.update)
+
+            update.setOnClickListener {
+
+                var id= Splashscreen.sp.getInt("id",1)
+                var contact = MyDataBase(homePage)
+
+                var cursor1 : Cursor
+                cursor1= contact.addeddata(id)
+
+                while (cursor1.moveToNext()){
+
+                    numarray.add(cursor1.getString(1))
+                    conarray.add(cursor1.getString(2))
+                    emailarray.add(cursor1.getString(3))
+
+                }
+                editname.setText(numarray[p0])
+                editcontact.setText(conarray[p0])
+                editemail.setText(emailarray[p0])
+
+            }
+            dialog.show()
 
         }
 
+//        delete.setOnClickListener {
+//
+//
+//        }
 
         textview.setText(numarray[p0])
         textview2.setText(conarray[p0])
@@ -77,3 +106,5 @@ class Myadpter(
     }
 
 }
+
+

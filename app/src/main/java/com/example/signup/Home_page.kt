@@ -23,6 +23,7 @@ class Home_page : AppCompatActivity() {
 
     var numarray = ArrayList<String>()
     var conarray = ArrayList<String>()
+    var emailarray = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -35,6 +36,7 @@ class Home_page : AppCompatActivity() {
 
         numarray.clear()
         conarray.clear()
+        emailarray.clear()
 
         var id= Splashscreen.sp.getInt("id",1)
         var contact = MyDataBase(this)
@@ -50,7 +52,7 @@ class Home_page : AppCompatActivity() {
 
         }
 
-        var contact_adapter = Myadpter(this, numarray,conarray)
+        var contact_adapter = Myadpter(this, numarray,conarray,emailarray)
         contact_list.adapter = contact_adapter
 
         addbtn.setOnClickListener {

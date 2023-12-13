@@ -12,7 +12,7 @@
         android:id="@+id/profileimg"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
         android:background="@drawable/baseline_person_24"
         android:backgroundTint="#3C90CF"
@@ -21,18 +21,19 @@
     <TextView
         android:id="@+id/textview"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="100dp"
         android:textColor="@color/white"
-        android:textSize="15dp"/>
+        android:textSize="16dp"
+         />
 
     <TextView
         android:layout_below="@+id/textview"
         android:id="@+id/textview2"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="100dp"
         android:textColor="#6C6A6A"
@@ -40,19 +41,19 @@
 
     <ImageView
         android:id="@+id/edit"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:background="@drawable/baseline_edit_24"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="290dp"
         />
 
     <ImageView
         android:id="@+id/delete"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:background="@drawable/deleteicon"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="330dp"
         />
 

@@ -81,13 +81,13 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
 //        }
 
 //    }
-//    fun delete( id: Int)
-//    {
-//        var delet = "DELETE FROME mytable WHERE id = '$id' "
-//        try {
-//            writableDatabase.execSQL(delet)
-//        }catch (e: Exception){
-//        }
-//    }
+    fun delete( id: Int)
+    {
+        var delet = "DELETE FROME mytable WHERE id = '$id' "
+        try {
+            writableDatabase.execSQL(delet)
+        }catch (e: Exception){
+        }
+    }
 
 }
