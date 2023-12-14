@@ -5,7 +5,7 @@
     android:background="@drawable/text">
 
 
-    <TextView
+    <EditText
         android:id="@+id/editname"
         android:layout_marginTop="40dp"
         android:padding="10dp"
@@ -19,7 +19,7 @@
         android:inputType="textPersonName"/>
 
 
-    <TextView
+    <EditText
         android:id="@+id/editcontact"
         android:layout_marginTop="20dp"
         android:padding="10dp"
@@ -34,7 +34,7 @@
         android:inputType="phone"/>
 
 
-    <TextView
+    <EditText
         android:id="@+id/editemail"
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/strok"

@@ -39,7 +39,6 @@ class Myadpter(
         var delete : ImageView
 
 
-
         var forcontact = LayoutInflater.from(homePage).inflate(R.layout.forcontact,p2,false)
 
         textview=forcontact.findViewById(R.id.textview)
@@ -47,7 +46,14 @@ class Myadpter(
         editt=forcontact.findViewById(R.id.edit)
         delete=forcontact.findViewById(R.id.delete)
 
+        
         var dialog = Dialog(homePage)
+
+
+        var editname : EditText
+        var editcontact : EditText
+        var editemail : EditText
+        var update : Button
 
 
 
@@ -58,18 +64,16 @@ class Myadpter(
 //            dialog.setCancelable(false)
             dialog.setContentView(R.layout.dialogbox)
 
-            var editname : TextView
-            var editcontact : TextView
-            var editemail : TextView
-            var update : Button
-
+            numarray.clear()
+            conarray.clear()
+            emailarray.clear()
 
             editname=dialog.findViewById(R.id.editname)
             editcontact=dialog.findViewById(R.id.editcontact)
             editemail=dialog.findViewById(R.id.editemail)
             update=dialog.findViewById(R.id.update)
 
-            update.setOnClickListener {
+
 
                 var id= Splashscreen.sp.getInt("id",1)
                 var contact = MyDataBase(homePage)
@@ -83,13 +87,15 @@ class Myadpter(
                     conarray.add(cursor1.getString(2))
                     emailarray.add(cursor1.getString(3))
 
-                }
-                editname.setText(numarray[p0])
-                editcontact.setText(conarray[p0])
-                editemail.setText(emailarray[p0])
+            }
+            editname.setText(numarray[p0])
+            editcontact.setText(conarray[p0])
+            editemail.setText(emailarray[p0])
+            dialog.show()
+
+            update.setOnClickListener {
 
             }
-            dialog.show()
 
         }
 

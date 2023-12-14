@@ -41,7 +41,10 @@ class add_contact : AppCompatActivity() {
 
 //            Toast.makeText(this, "data added", Toast.LENGTH_SHORT).show()
 
-                var intrnt = Intent(this@add_contact,Home_page::class.java).putExtra("namee",firstNameEt.text.toString()).putExtra("userr",phoneNumberEt.text.toString())
+                var intrnt = Intent(this@add_contact,Home_page::class.java)
+                    .putExtra("nameput",firstNameEt.text.toString())
+                    .putExtra("contactput",phoneNumberEt.text.toString())
+                    .putExtra("emailput",emailEt.text.toString())
                 startActivity(intrnt)
                 finish()
 
