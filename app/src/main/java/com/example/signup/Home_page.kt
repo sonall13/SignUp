@@ -21,6 +21,7 @@ class Home_page : AppCompatActivity() {
     lateinit var addbtn : ImageView
     lateinit var logouticon : ImageView
 
+
     var numarray = ArrayList<String>()
     var conarray = ArrayList<String>()
     var emailarray = ArrayList<String>()
@@ -28,6 +29,7 @@ class Home_page : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_home_page)
+
 
 
     contact_list = findViewById(R.id.contact_list)
@@ -52,7 +54,11 @@ class Home_page : AppCompatActivity() {
 
         }
 
-        var contact_adapter = Myadpter(this, numarray,conarray,emailarray)
+        var nameput = intent.getStringExtra("nameput")
+        var contactput = intent.getStringExtra("contactput")
+        var emailput = intent.getStringExtra("emailput")
+
+        var contact_adapter = Myadpter(this, numarray,conarray,emailarray,nameput,contactput,emailput)
         contact_list.adapter = contact_adapter
 
         addbtn.setOnClickListener {

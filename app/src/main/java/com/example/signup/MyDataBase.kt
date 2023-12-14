@@ -68,26 +68,27 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
     }
 
 
-//    fun upadate(user: String, id: Int) {
-//        var updat = "UPDATE mytable SET username = '$user' WHERE id='$id' "
-//
-//        try {
-//            writableDatabase.execSQL(updat)
-//
-//        }catch (e : Exception)
-//        {
-//            Log.e("====", "upadate: catch", )
-//
-//        }
+    fun upadate(name: String,contact: String,email: String, id: Int) {
+        var updat = "UPDATE fetchdata SET name = '$name'  contact = '$contact' email='$email' WHERE id='$id' "
 
-//    }
-    fun delete( id: Int)
-    {
-        var delet = "DELETE FROME mytable WHERE id = '$id' "
         try {
-            writableDatabase.execSQL(delet)
-        }catch (e: Exception){
+            writableDatabase.execSQL(updat)
+
+        }catch (e : Exception)
+        {
+//            Log.e("====", "upadate: catch", )
         }
+
     }
+
+
+//    fun delete( id: Int)
+//    {
+//        var delet = "DELETE FROME mytable WHERE id = '$id' "
+//        try {
+//            writableDatabase.execSQL(delet)
+//        }catch (e: Exception){
+//        }
+//    }
 
 }

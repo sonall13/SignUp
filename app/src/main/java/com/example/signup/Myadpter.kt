@@ -5,6 +5,8 @@ import android.database.Cursor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -15,7 +17,10 @@ class Myadpter(
     var homePage: Home_page,
     var numarray: ArrayList<String>,
     var conarray: ArrayList<String>,
-   var  emailarray: ArrayList<String>
+    var emailarray: ArrayList<String>,
+    var nameput: String?,
+   var contactput: String?,
+   var emailput: String?
 ) : BaseAdapter() {
     override fun getCount(): Int {
         return numarray.size
@@ -56,8 +61,6 @@ class Myadpter(
         var update : Button
 
 
-
-
         editt.setOnClickListener {
 
             dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -91,18 +94,24 @@ class Myadpter(
             editname.setText(numarray[p0])
             editcontact.setText(conarray[p0])
             editemail.setText(emailarray[p0])
+
+
+//            val animation: Animation =
+//                AnimationUtils.loadAnimation(homePage, R.anim.updateanim)
+//            animation.duration = 1000
+//            update.animation = animation
+
             dialog.show()
 
             update.setOnClickListener {
 
+                var up = MyDataBase(homePage)
+                up.upadate(nameput.toString(),contactput.toString(),emailput.toString(),id)
+                dialog.setCancelable(false)
+
             }
 
         }
-
-//        delete.setOnClickListener {
-//
-//
-//        }
 
         textview.setText(numarray[p0])
         textview2.setText(conarray[p0])
