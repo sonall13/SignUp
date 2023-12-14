@@ -1,6 +1,7 @@
 package com.example.signup
 
 import android.app.Dialog
+import android.content.Context
 import android.database.Cursor
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 
 class Myadpter(
@@ -42,6 +44,7 @@ class Myadpter(
         var textview2 : TextView
         var editt : ImageView
         var delete : ImageView
+        var relative : RelativeLayout
 
 
         var forcontact = LayoutInflater.from(homePage).inflate(R.layout.forcontact,p2,false)
@@ -50,16 +53,16 @@ class Myadpter(
         textview2=forcontact.findViewById(R.id.textview2)
         editt=forcontact.findViewById(R.id.edit)
         delete=forcontact.findViewById(R.id.delete)
+        relative=forcontact.findViewById(R.id.relative)
 
-        
         var dialog = Dialog(homePage)
-
 
         var editname : EditText
         var editcontact : EditText
         var editemail : EditText
         var update : Button
 
+        var id= Splashscreen.sp.getInt("id",1)
 
         editt.setOnClickListener {
 
@@ -76,9 +79,6 @@ class Myadpter(
             editemail=dialog.findViewById(R.id.editemail)
             update=dialog.findViewById(R.id.update)
 
-
-
-                var id= Splashscreen.sp.getInt("id",1)
                 var contact = MyDataBase(homePage)
 
                 var cursor1 : Cursor
@@ -101,15 +101,22 @@ class Myadpter(
 //            animation.duration = 1000
 //            update.animation = animation
 
-            dialog.show()
-
             update.setOnClickListener {
 
                 var up = MyDataBase(homePage)
                 up.upadate(nameput.toString(),contactput.toString(),emailput.toString(),id)
-                dialog.setCancelable(false)
-
+//                dialog.setCancelable(true)
             }
+            dialog.show()
+        }
+
+
+        delete.setOnClickListener {
+
+            var del = MyDataBase(homePage)
+            del.delete(id)
+
+            relative.isEnabled
 
         }
 
