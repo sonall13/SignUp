@@ -1,18 +1,16 @@
 package com.example.signup
 
 import android.app.Dialog
-import android.content.Context
 import android.database.Cursor
+import android.os.Build.VERSION_CODES.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.RelativeLayout
+import android.widget.PopupMenu
 import android.widget.TextView
 
 class Myadpter(
@@ -42,18 +40,20 @@ class Myadpter(
 
         var textview : TextView
         var textview2 : TextView
-        var editt : ImageView
-        var delete : ImageView
-        var relative : RelativeLayout
+//        var editt : ImageView
+//        var delete : ImageView
+//        var relative : RelativeLayout
+        var popup : ImageView
 
 
         var forcontact = LayoutInflater.from(homePage).inflate(R.layout.forcontact,p2,false)
 
         textview=forcontact.findViewById(R.id.textview)
         textview2=forcontact.findViewById(R.id.textview2)
-        editt=forcontact.findViewById(R.id.edit)
-        delete=forcontact.findViewById(R.id.delete)
-        relative=forcontact.findViewById(R.id.relative)
+//        editt=forcontact.findViewById(R.id.edit)
+//        delete=forcontact.findViewById(R.id.delete)
+//        relative=forcontact.findViewById(R.id.relative)
+        popup=forcontact.findViewById(R.id.popup)
 
         var dialog = Dialog(homePage)
 
@@ -64,36 +64,47 @@ class Myadpter(
 
         var id= Splashscreen.sp.getInt("id",1)
 
-        editt.setOnClickListener {
 
-            dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
-//            dialog.setCancelable(false)
-            dialog.setContentView(R.layout.dialogbox)
+        popup.setOnClickListener {
 
-            numarray.clear()
-            conarray.clear()
-            emailarray.clear()
+//            Log.e("====", "getView: hgggghfgff")
 
-            editname=dialog.findViewById(R.id.editname)
-            editcontact=dialog.findViewById(R.id.editcontact)
-            editemail=dialog.findViewById(R.id.editemail)
-            update=dialog.findViewById(R.id.update)
+            var popupmenu=PopupMenu(homePage,popup)
+            popupmenu.menuInflater.inflate(R.menu.popp,popupmenu.menu)
 
-                var contact = MyDataBase(homePage)
+            popupmenu.setOnMenuItemClickListener { menuItem ->
 
-                var cursor1 : Cursor
-                cursor1= contact.addeddata(id)
+                when(menuItem.itemId){
+                    R.id.edit -> {
 
-                while (cursor1.moveToNext()){
+                        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
+//                      dialog.setCancelable(false)
+                        dialog.setContentView(R.layout.dialogbox)
 
-                    numarray.add(cursor1.getString(1))
-                    conarray.add(cursor1.getString(2))
-                    emailarray.add(cursor1.getString(3))
+                        numarray.clear()
+                        conarray.clear()
+                        emailarray.clear()
 
-            }
-            editname.setText(numarray[p0])
-            editcontact.setText(conarray[p0])
-            editemail.setText(emailarray[p0])
+                        editname=dialog.findViewById(R.id.editname)
+                        editcontact=dialog.findViewById(R.id.editcontact)
+                        editemail=dialog.findViewById(R.id.editemail)
+                        update=dialog.findViewById(R.id.update)
+
+                        var contact = MyDataBase(homePage)
+
+                        var cursor1 : Cursor
+                        cursor1= contact.addeddata(id)
+
+                        while (cursor1.moveToNext()){
+
+                            numarray.add(cursor1.getString(1))
+                            conarray.add(cursor1.getString(2))
+                            emailarray.add(cursor1.getString(3))
+
+                        }
+                        editname.setText(numarray[p0])
+                        editcontact.setText(conarray[p0])
+                        editemail.setText(emailarray[p0])
 
 
 //            val animation: Animation =
@@ -101,22 +112,25 @@ class Myadpter(
 //            animation.duration = 1000
 //            update.animation = animation
 
-            update.setOnClickListener {
+                        update.setOnClickListener {
 
-                var up = MyDataBase(homePage)
-                up.upadate(nameput.toString(),contactput.toString(),emailput.toString(),id)
+                            var up = MyDataBase(homePage)
+                            up.upadate(nameput.toString(),contactput.toString(),emailput.toString(),id)
 //                dialog.setCancelable(true)
+                        }
+                        dialog.show()
+
+
+                    }
+                    R.id.delete ->{
+
+                        var del = MyDataBase(homePage)
+                          del.delete(id)
+
+                    }
+                }
+                 true
             }
-            dialog.show()
-        }
-
-
-        delete.setOnClickListener {
-
-            var del = MyDataBase(homePage)
-            del.delete(id)
-
-            relative.isEnabled
 
         }
 
