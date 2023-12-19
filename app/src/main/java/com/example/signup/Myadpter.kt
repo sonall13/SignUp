@@ -128,7 +128,9 @@ class Myadpter(
 //                    }
                 }
                 true
+
             }
+            popupmenu.show()
         }
         textview.setText(numarray[p0])
         textview2.setText(conarray[p0])
