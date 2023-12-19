@@ -41,32 +41,13 @@
         android:textSize="10dp"/>
 
         <ImageView
-            android:id="@+id/popup"
+            android:id="@+id/pop"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/menu"
             android:layout_marginLeft="300dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/white"/>
-
-        <!--    <ImageView-->
-<!--        android:id="@+id/edit"-->
-<!--        android:layout_width="25dp"-->
-<!--        android:layout_height="25dp"-->
-<!--        android:background="@drawable/baseline_edit_24"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:layout_marginLeft="290dp"-->
-<!--        />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/delete"-->
-<!--        android:layout_width="25dp"-->
-<!--        android:layout_height="25dp"-->
-<!--        android:background="@drawable/deleteicon"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:layout_marginLeft="330dp"-->
-<!--        />-->
-
 
 
     </RelativeLayout>

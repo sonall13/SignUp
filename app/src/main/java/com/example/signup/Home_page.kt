@@ -70,8 +70,12 @@ class Home_page : AppCompatActivity() {
 
         logouticon.setOnClickListener {
 
-//            Splashscreen.edit.putBoolean("status",false)
-//            Splashscreen.edit.apply()
+            Splashscreen.edit.putBoolean("status",false)
+            Splashscreen.edit.apply()
+
+            numarray.clear()
+            conarray.clear()
+            emailarray.clear()
 
             var intent = Intent(this@Home_page,Login_page::class.java)
             startActivity(intent)
@@ -80,18 +84,6 @@ class Home_page : AppCompatActivity() {
 
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -41,10 +41,6 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
 
     }
 
-
-
-
-
     fun dataadd(id: Int, name: String, contact: String, email: String) {
 
         var insertt = "INSERT INTO fetchdata(id,name , contact , email) VALUES ('$id','$name' ,'$contact' ,'$email')"
@@ -66,7 +62,6 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
         return cursorr
 
     }
-
 
     fun upadate(name: String,contact: String,email: String, id: Int) {
         var updat = "UPDATE fetchdata SET name = '$name'  contact = '$contact' email='$email' WHERE id='$id' "
