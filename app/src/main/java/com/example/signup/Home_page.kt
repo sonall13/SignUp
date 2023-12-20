@@ -2,10 +2,11 @@ package com.example.signup
 
 import android.content.Intent
 import android.database.Cursor
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
 
 class Home_page : AppCompatActivity() {
 //
@@ -17,10 +18,9 @@ class Home_page : AppCompatActivity() {
 //    var user =""
 
 
-
-    lateinit var contact_list : ListView
-    lateinit var addbtn : ImageView
-    lateinit var logouticon : ImageView
+    lateinit var contact_list: ListView
+    lateinit var addbtn: ImageView
+    lateinit var logouticon: ImageView
 
 
     var numarray = ArrayList<String>()
@@ -28,12 +28,12 @@ class Home_page : AppCompatActivity() {
     var emailarray = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_home_page)
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home_page)
 
 
 
-    contact_list = findViewById(R.id.contact_list)
+        contact_list = findViewById(R.id.contact_list)
         addbtn = findViewById(R.id.addbtn)
         logouticon = findViewById(R.id.logouticon)
 
@@ -41,15 +41,14 @@ class Home_page : AppCompatActivity() {
         conarray.clear()
         emailarray.clear()
 
-        var id= Splashscreen.sp.getInt("id",1)
+
+
+        var id = Splashscreen.sp.getInt("id", 0)
+        Log.e("====ID", "onCreate: $id", )
         var contact = MyDataBase(this)
+        var cursor1 = contact.SelectConatctdata(id)
 
-        var cursor1 : Cursor
-         cursor1= contact.addeddata(id)
-
-
-        while (cursor1.moveToNext()){
-
+        while (cursor1.moveToNext()) {
             numarray.add(cursor1.getString(1))
             conarray.add(cursor1.getString(2))
 
@@ -59,35 +58,33 @@ class Home_page : AppCompatActivity() {
         var contactput = intent.getStringExtra("contactput")
         var emailput = intent.getStringExtra("emailput")
 
-        var contact_adapter = Myadpter(this, numarray,conarray,emailarray,nameput,contactput,emailput)
+        var contact_adapter =
+            Myadpter(this, numarray, conarray, emailarray)
         contact_list.adapter = contact_adapter
 
         addbtn.setOnClickListener {
 
-            var intent = Intent(this@Home_page,add_contact::class.java)
+            var intent = Intent(this@Home_page, add_contact::class.java)
             startActivity(intent)
             finish()
         }
 
         logouticon.setOnClickListener {
 
-            Splashscreen.edit.putBoolean("status",false)
+            Splashscreen.edit.putBoolean("status", false)
             Splashscreen.edit.apply()
 
             numarray.clear()
             conarray.clear()
             emailarray.clear()
 
-            var intent = Intent(this@Home_page,Login_page::class.java)
+            var intent = Intent(this@Home_page, Login_page::class.java)
             startActivity(intent)
             finish()
         }
 
-   }
+    }
 }
-
-
-
 
 
 //        update = findViewById(R.id.update)

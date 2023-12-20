@@ -1,7 +1,7 @@
 package com.example.signup
 
 import android.app.Dialog
-import android.database.Cursor
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,20 +12,15 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
+
 class Myadpter(
     var homePage: Home_page,
     var numarray: ArrayList<String>,
     var conarray: ArrayList<String>,
     var emailarray: ArrayList<String>,
-    var nameput: String?,
-    var contactput: String?,
-    var emailput: String?
-) : BaseAdapter() {
-    override fun getCount(): Int {
-        return numarray.size
-        return conarray.size
-        return emailarray.size
-    }
+
+    ) : BaseAdapter() {
+    override fun getCount(): Int = numarray.size
 
     override fun getItem(p0: Int): Any {
         return p0
@@ -60,11 +55,11 @@ class Myadpter(
         var editemail: EditText
         var update: Button
 
-        var id = Splashscreen.sp.getInt("id", 1)
+
 
         pop.setOnClickListener {
 
-            Log.e("===", "getView: bgbbgh", )
+            Log.e("===", "getView: bgbbgh")
 
             var popupmenu = PopupMenu(homePage, pop)
             popupmenu.menuInflater.inflate(R.menu.popp, popupmenu.menu)
@@ -80,30 +75,15 @@ class Myadpter(
 //                      dialog.setCancelable(false)
                         dialog.setContentView(R.layout.dialogbox)
 
-                        numarray.clear()
-                        conarray.clear()
-                        emailarray.clear()
-
                         editname = dialog.findViewById(R.id.editname)
                         editcontact = dialog.findViewById(R.id.editcontact)
                         editemail = dialog.findViewById(R.id.editemail)
                         update = dialog.findViewById(R.id.update)
 
-                        var contact = MyDataBase(homePage)
 
-                        var cursor1: Cursor
-                        cursor1 = contact.addeddata(id)
-
-                        while (cursor1.moveToNext()) {
-
-                            numarray.add(cursor1.getString(1))
-                            conarray.add(cursor1.getString(2))
-                            emailarray.add(cursor1.getString(3))
-
-                        }
                         editname.setText(numarray[position])
                         editcontact.setText(conarray[position])
-                        editemail.setText(emailarray[position])
+//                        editemail.setText(emailarray[position])
 
 
 //            val animation: Animation =
@@ -113,21 +93,27 @@ class Myadpter(
 
                         update.setOnClickListener {
                             var up = MyDataBase(homePage)
+                            Log.e("===Uc", "getView: ${editname.text.toString()}")
                             up.upadate(
-                                nameput.toString(), contactput.toString(), emailput.toString(), id
+                                editname.text.toString(),
+                                editcontact.text.toString(),
+                                editemail.text.toString(),
+                                position
                             )
+                            dialog.dismiss()
+                            homePage.startActivity(Intent(homePage, Home_page::class.java))
+                            homePage.finish()
 //                dialog.setCancelable(true)
                         }
                         dialog.show()
                     }
+
                     R.id.delete -> {
                         var del = MyDataBase(homePage)
 
                         numarray.removeAt(position)
                         del.delete(position)
-
                         notifyDataSetChanged()
-
 
 
                     }
@@ -140,7 +126,6 @@ class Myadpter(
 
         textview.setText(numarray[position])
         textview2.setText(conarray[position])
-
         return forcontact
 
     }

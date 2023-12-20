@@ -13,7 +13,7 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
          var create = "CREATE TABLE mytable (id INTEGER PRIMARY Key autoincrement , name text UNIQUE , username text UNIQUE  , email text UNIQUE , password text UNIQUE )"
          p0.execSQL(create)
 
-         var fetchdata = "CREATE TABLE fetchdata(id INTEGER PRIMARY Key autoincrement , name TEXT UNIQUE , contact NUMBER UNIQUE , email TEXT UNIQUE,Userid integer)"
+         var fetchdata = "CREATE TABLE fetchdata(id INTEGER PRIMARY Key autoincrement , name TEXT UNIQUE , contact text UNIQUE , email TEXT UNIQUE,Userid integer)"
            p0.execSQL(fetchdata)
 
     }
@@ -52,10 +52,10 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
         }
     }
 
-    fun addeddata(id:Int) : Cursor{
+    fun SelectConatctdata(id:Int) : Cursor{
 
 
-        var selectt = "SELECT * FROM fetchdata WHERE id = '$id' "
+        var selectt = "SELECT * FROM fetchdata WHERE Userid = '$id'"
 
         var cursorr :Cursor
         cursorr = readableDatabase.rawQuery(selectt,null)
@@ -64,15 +64,10 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
     }
 
     fun upadate(name: String,contact: String,email: String, id: Int) {
-        var updat = "UPDATE fetchdata SET name = '$name'  contact = '$contact' email='$email' WHERE id='$id' "
+        var updat = "UPDATE fetchdata SET name = '$name' , contact = '$contact', email='$email' WHERE id='$id' "
+        writableDatabase.execSQL(updat)
 
-        try {
-            writableDatabase.execSQL(updat)
 
-        }catch (e : Exception)
-        {
-//            Log.e("====", "upadate: catch", )
-        }
 
     }
 

@@ -27,7 +27,7 @@ class Splashscreen : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
         var Islogin =    sp.getBoolean("status",false)
 
-            Log.e("======", "onCreate: $Islogin", )
+            Log.e("S======", "onCreate: $Islogin", )
 
             if (Islogin){
                 startActivity(Intent(this@Splashscreen,Home_page::class.java))
@@ -36,7 +36,6 @@ class Splashscreen : AppCompatActivity() {
 
             }
             else{
-                Log.e("===", "onCreate: ${Splashscreen.sp.getBoolean("status",false)}", )
 
                 startActivity(Intent(this@Splashscreen,Login_page::class.java))
                 finish()

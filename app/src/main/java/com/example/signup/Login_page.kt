@@ -44,7 +44,7 @@ class Login_page : AppCompatActivity() {
                 Splashscreen.edit.putInt("id",ab)
                 Splashscreen.edit.putBoolean("status",true)
                 Splashscreen.edit.apply()
-                Log.e("====", "onCreate: ${Splashscreen.sp.getBoolean("status",false)}" )
+                Log.e("L====", "onCreate: ${Splashscreen.sp.getBoolean("status",false)}" )
                 startActivity(Intent(this@Login_page ,Home_page::class.java))
                 finish()
             }

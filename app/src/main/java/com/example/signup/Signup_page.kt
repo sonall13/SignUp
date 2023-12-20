@@ -36,7 +36,7 @@ class Signup_page : AppCompatActivity() {
 
             data.insertdata(input_name.text.toString(),input_user.text.toString(),email.text.toString(),password.text.toString())
 
-            startActivity(Intent(this@Signup_page,Home_page::class.java))
+            startActivity(Intent(this@Signup_page,Login_page::class.java))
             finish()
 
         }
