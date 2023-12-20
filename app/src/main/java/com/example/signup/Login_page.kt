@@ -29,6 +29,7 @@ class Login_page : AppCompatActivity() {
 
 
 
+
         login_btn.setOnClickListener {
 
 //            Toast.makeText(this, "SIGNING IN.", Toast.LENGTH_SHORT).show()
@@ -41,8 +42,6 @@ class Login_page : AppCompatActivity() {
             {
                  ab = data.getInt(0)
                 Splashscreen.edit.putInt("id",ab)
-                Splashscreen.edit.apply()
-
                 Splashscreen.edit.putBoolean("status",true)
                 Splashscreen.edit.apply()
                 Log.e("====", "onCreate: ${Splashscreen.sp.getBoolean("status",false)}" )

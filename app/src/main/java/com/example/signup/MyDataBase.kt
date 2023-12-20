@@ -13,7 +13,7 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
          var create = "CREATE TABLE mytable (id INTEGER PRIMARY Key autoincrement , name text UNIQUE , username text UNIQUE  , email text UNIQUE , password text UNIQUE )"
          p0.execSQL(create)
 
-         var fetchdata = "CREATE TABLE fetchdata(id INTEGER , name TEXT UNIQUE , contact NUMBER UNIQUE , email TEXT UNIQUE)"
+         var fetchdata = "CREATE TABLE fetchdata(id INTEGER PRIMARY Key autoincrement , name TEXT UNIQUE , contact NUMBER UNIQUE , email TEXT UNIQUE,Userid integer)"
            p0.execSQL(fetchdata)
 
     }
@@ -43,7 +43,7 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
 
     fun dataadd(id: Int, name: String, contact: String, email: String) {
 
-        var insertt = "INSERT INTO fetchdata(id,name , contact , email) VALUES ('$id','$name' ,'$contact' ,'$email')"
+        var insertt = "INSERT INTO fetchdata(Userid,name , contact , email) VALUES ('$id','$name' ,'$contact' ,'$email')"
         try {
             writableDatabase.execSQL(insertt)
 

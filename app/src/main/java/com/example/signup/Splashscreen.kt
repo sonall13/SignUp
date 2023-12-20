@@ -21,11 +21,19 @@ class Splashscreen : AppCompatActivity() {
         sp= getSharedPreferences("statuss", MODE_PRIVATE)
         edit = sp.edit()
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            if (sp.getBoolean("status",false)){
 
+
+
+        Handler(Looper.getMainLooper()).postDelayed({
+        var Islogin =    sp.getBoolean("status",false)
+
+            Log.e("======", "onCreate: $Islogin", )
+
+            if (Islogin){
                 startActivity(Intent(this@Splashscreen,Home_page::class.java))
                 finish()
+
+
             }
             else{
                 Log.e("===", "onCreate: ${Splashscreen.sp.getBoolean("status",false)}", )

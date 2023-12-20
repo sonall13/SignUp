@@ -12,7 +12,6 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
-
 class Myadpter(
     var homePage: Home_page,
     var numarray: ArrayList<String>,
@@ -36,7 +35,7 @@ class Myadpter(
         return p0.toLong()
     }
 
-    override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
+    override fun getView(position: Int, p1: View?, p2: ViewGroup?): View {
 
         var textview: TextView
         var textview2: TextView
@@ -44,7 +43,6 @@ class Myadpter(
 //        var delete : ImageView
 //        var relative : RelativeLayout
         var pop: ImageView
-
 
         var forcontact = LayoutInflater.from(homePage).inflate(R.layout.forcontact, p2, false)
 
@@ -103,9 +101,9 @@ class Myadpter(
                             emailarray.add(cursor1.getString(3))
 
                         }
-                        editname.setText(numarray[p0])
-                        editcontact.setText(conarray[p0])
-                        editemail.setText(emailarray[p0])
+                        editname.setText(numarray[position])
+                        editcontact.setText(conarray[position])
+                        editemail.setText(emailarray[position])
 
 
 //            val animation: Animation =
@@ -122,18 +120,26 @@ class Myadpter(
                         }
                         dialog.show()
                     }
-//                    R.id.delete -> {
-//                        var del = MyDataBase(homePage)
-//                        del.delete(id)
-//                    }
+                    R.id.delete -> {
+                        var del = MyDataBase(homePage)
+
+                        numarray.removeAt(position)
+                        del.delete(position)
+
+                        notifyDataSetChanged()
+
+
+
+                    }
                 }
                 true
 
             }
             popupmenu.show()
         }
-        textview.setText(numarray[p0])
-        textview2.setText(conarray[p0])
+
+        textview.setText(numarray[position])
+        textview2.setText(conarray[position])
 
         return forcontact
 
