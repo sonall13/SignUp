@@ -15,12 +15,11 @@ import android.widget.TextView
 
 class Myadpter(
     var homePage: Home_page,
-    var numarray: ArrayList<String>,
-    var conarray: ArrayList<String>,
-    var emailarray: ArrayList<String>,
+   var userlist: ArrayList<Myuserdata>,
+
 
     ) : BaseAdapter() {
-    override fun getCount(): Int = numarray.size
+    override fun getCount(): Int = userlist.size
 
     override fun getItem(p0: Int): Any {
         return p0
@@ -49,21 +48,17 @@ class Myadpter(
         pop = forcontact.findViewById(R.id.pop)
 
         var dialog = Dialog(homePage)
-
         var editname: EditText
         var editcontact: EditText
         var editemail: EditText
         var update: Button
-
-
-
+        var udaat = userlist.get(position)
         pop.setOnClickListener {
 
             Log.e("===", "getView: bgbbgh")
 
             var popupmenu = PopupMenu(homePage, pop)
             popupmenu.menuInflater.inflate(R.menu.popp, popupmenu.menu)
-
             popupmenu.setOnMenuItemClickListener { menuItem ->
 
                 when (menuItem.itemId) {
@@ -81,24 +76,29 @@ class Myadpter(
                         update = dialog.findViewById(R.id.update)
 
 
-                        editname.setText(numarray[position])
-                        editcontact.setText(conarray[position])
+
+                        editname.setText(udaat.name)
+                        editcontact.setText(udaat.contact)
+
+
+
 //                        editemail.setText(emailarray[position])
-
-
 //            val animation: Animation =
 //                AnimationUtils.loadAnimation(homePage, R.anim.updateanim)
 //            animation.duration = 1000
 //            update.animation = animation
 
                         update.setOnClickListener {
+
+                            Log.e("====POS", "getView:$position ", )
+
                             var up = MyDataBase(homePage)
                             Log.e("===Uc", "getView: ${editname.text.toString()}")
                             up.upadate(
                                 editname.text.toString(),
                                 editcontact.text.toString(),
                                 editemail.text.toString(),
-                                position
+                                udaat.id
                             )
                             dialog.dismiss()
                             homePage.startActivity(Intent(homePage, Home_page::class.java))
@@ -111,7 +111,7 @@ class Myadpter(
                     R.id.delete -> {
                         var del = MyDataBase(homePage)
 
-                        numarray.removeAt(position)
+                        userlist.removeAt(position)
                         del.delete(position)
                         notifyDataSetChanged()
 
@@ -123,11 +123,9 @@ class Myadpter(
             }
             popupmenu.show()
         }
-
-        textview.setText(numarray[position])
-        textview2.setText(conarray[position])
+        textview.setText(udaat.name)
+        textview2.setText(udaat.contact)
         return forcontact
-
     }
 
 }

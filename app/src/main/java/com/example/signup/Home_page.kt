@@ -1,7 +1,6 @@
 package com.example.signup
 
 import android.content.Intent
-import android.database.Cursor
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -23,9 +22,7 @@ class Home_page : AppCompatActivity() {
     lateinit var logouticon: ImageView
 
 
-    var numarray = ArrayList<String>()
-    var conarray = ArrayList<String>()
-    var emailarray = ArrayList<String>()
+    var userlist = ArrayList<Myuserdata>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,20 +34,24 @@ class Home_page : AppCompatActivity() {
         addbtn = findViewById(R.id.addbtn)
         logouticon = findViewById(R.id.logouticon)
 
-        numarray.clear()
-        conarray.clear()
-        emailarray.clear()
-
+        userlist.clear()
 
 
         var id = Splashscreen.sp.getInt("id", 0)
-        Log.e("====ID", "onCreate: $id", )
+        Log.e("====ID", "onCreate: $id")
         var contact = MyDataBase(this)
         var cursor1 = contact.SelectConatctdata(id)
 
         while (cursor1.moveToNext()) {
-            numarray.add(cursor1.getString(1))
-            conarray.add(cursor1.getString(2))
+
+            var name = cursor1.getString(1)
+            var contact = cursor1.getString(2)
+            var id = cursor1.getInt(0)
+
+            //[ {"name":haresh,"contact":788,"id":1},{"name":haresh1,"contact":858757,"id":2},{"name":haresh,"contact":788,"id":1},{"name":haresh,"contact":788,"id":1}]
+            var myuserdata = Myuserdata(id, name, contact)
+
+            userlist.add(myuserdata)
 
         }
 
@@ -59,7 +60,7 @@ class Home_page : AppCompatActivity() {
         var emailput = intent.getStringExtra("emailput")
 
         var contact_adapter =
-            Myadpter(this, numarray, conarray, emailarray)
+            Myadpter(this, userlist)
         contact_list.adapter = contact_adapter
 
         addbtn.setOnClickListener {
@@ -74,9 +75,6 @@ class Home_page : AppCompatActivity() {
             Splashscreen.edit.putBoolean("status", false)
             Splashscreen.edit.apply()
 
-            numarray.clear()
-            conarray.clear()
-            emailarray.clear()
 
             var intent = Intent(this@Home_page, Login_page::class.java)
             startActivity(intent)
