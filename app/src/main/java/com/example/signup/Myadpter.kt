@@ -114,12 +114,9 @@ class Myadpter(
                         userlist.removeAt(position)
                         del.delete(position)
                         notifyDataSetChanged()
-
-
                     }
                 }
                 true
-
             }
             popupmenu.show()
         }
