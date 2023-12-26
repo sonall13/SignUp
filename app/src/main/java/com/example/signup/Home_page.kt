@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.ListView
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import java.util.Locale
 
 class Home_page : AppCompatActivity() {
 //
@@ -20,6 +23,8 @@ class Home_page : AppCompatActivity() {
     lateinit var contact_list: ListView
     lateinit var addbtn: ImageView
     lateinit var logouticon: ImageView
+    lateinit var search: androidx.appcompat.widget.SearchView
+
 
 
     var userlist = ArrayList<Myuserdata>()
@@ -33,8 +38,42 @@ class Home_page : AppCompatActivity() {
         contact_list = findViewById(R.id.contact_list)
         addbtn = findViewById(R.id.addbtn)
         logouticon = findViewById(R.id.logouticon)
+        search = findViewById(R.id.search)
 
         userlist.clear()
+
+        search.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                var serch_text=ArrayList<Myuserdata>()
+
+                for (i in 0..userlist.size-1) {
+                    var name = userlist.get(i).name
+                    var num=userlist.get(i).contact
+
+                    if (name.toString().toLowerCase(Locale.ROOT).contains(newText.toString().toLowerCase())) {
+                        serch_text.add(userlist.get(i))
+
+                    }else if (num.toString().toLowerCase().contains(newText.toString().lowercase())){
+                        serch_text.add(userlist.get(i))
+                    }
+                }
+
+                var adapterr = Myadpter(this@Home_page,serch_text)
+                contact_list.adapter = adapterr
+
+                return false
+            }
+        })
+
+
+        var contact_adapter =
+            Myadpter(this, userlist)
+        contact_list.adapter = contact_adapter
 
 
         var id = Splashscreen.sp.getInt("id", 0)
@@ -46,22 +85,16 @@ class Home_page : AppCompatActivity() {
 
             var name = cursor1.getString(1)
             var contact = cursor1.getString(2)
+            var email = cursor1.getString(3)
             var id = cursor1.getInt(0)
 
             //[ {"name":haresh,"contact":788,"id":1},{"name":haresh1,"contact":858757,"id":2},{"name":haresh,"contact":788,"id":1},{"name":haresh,"contact":788,"id":1}]
-            var myuserdata = Myuserdata(id, name, contact)
-
+            var myuserdata = Myuserdata(id, name, contact,email)
             userlist.add(myuserdata)
 
         }
 
-        var nameput = intent.getStringExtra("nameput")
-        var contactput = intent.getStringExtra("contactput")
-        var emailput = intent.getStringExtra("emailput")
 
-        var contact_adapter =
-            Myadpter(this, userlist)
-        contact_list.adapter = contact_adapter
 
         addbtn.setOnClickListener {
 

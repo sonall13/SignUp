@@ -28,8 +28,6 @@ class Login_page : AppCompatActivity() {
         create_acc = findViewById(R.id.create_acc)
 
 
-
-
         login_btn.setOnClickListener {
 
 //            Toast.makeText(this, "SIGNING IN.", Toast.LENGTH_SHORT).show()

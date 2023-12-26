@@ -1,3 +1,3 @@
 package com.example.signup
 
-data class Myuserdata(val id: Int, val name: String, val contact: String)
+data class Myuserdata(val id: Int, val name: String, val contact: String, val email: String)

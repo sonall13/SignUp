@@ -7,12 +7,22 @@
     tools:context=".Home_page">
 
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginRight="80dp"
+        android:background="@drawable/text"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        />
+
     <ImageView
         android:id="@+id/logouticon"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@drawable/logouticon"
-        android:layout_marginLeft="310dp"
+        android:layout_marginLeft="300dp"
         android:layout_marginTop="20dp"
         />
 
@@ -21,8 +31,9 @@
         android:id="@+id/contact_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@color/black"
+
         />
 
     <ImageView
@@ -37,22 +48,6 @@
 
 
 </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!--    <TextView-->
 <!--        android:id="@+id/text1"-->
@@ -70,7 +65,7 @@
 <!--        android:layout_marginTop="100dp"-->
 <!--        android:layout_toRightOf="@+id/text1"-->
 <!--       android:layout_marginLeft="50dp"-->
-<!--        android:textColor="@color/black"-->
+<!--        android:textColor0="@color/black"-->
 <!--        android:id="@+id/txt"-->
 <!--        android:textStyle="bold|italic"-->
 <!--        />-->

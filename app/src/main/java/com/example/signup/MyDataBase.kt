@@ -15,9 +15,7 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
 
          var fetchdata = "CREATE TABLE fetchdata(id INTEGER PRIMARY Key autoincrement , name TEXT UNIQUE , contact text UNIQUE , email TEXT UNIQUE,Userid integer)"
            p0.execSQL(fetchdata)
-
     }
-
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
 
     }
@@ -54,24 +52,18 @@ class MyDataBase(context: Context) : SQLiteOpenHelper(context,"mdata.db",null,1)
 
     fun SelectConatctdata(id:Int) : Cursor{
 
-
         var selectt = "SELECT * FROM fetchdata WHERE Userid = '$id'"
 
         var cursorr :Cursor
         cursorr = readableDatabase.rawQuery(selectt,null)
         return cursorr
-
     }
 
     fun upadate(name: String,contact: String,email: String, id: Int) {
         var updat = "UPDATE fetchdata SET name = '$name' , contact = '$contact', email='$email' WHERE id='$id' "
         writableDatabase.execSQL(updat)
 
-
-
     }
-
-
     fun delete( id: Int)
     {
         var delet = "DELETE FROME mytable WHERE id = '$id' "

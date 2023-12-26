@@ -16,8 +16,6 @@ import android.widget.TextView
 class Myadpter(
     var homePage: Home_page,
    var userlist: ArrayList<Myuserdata>,
-
-
     ) : BaseAdapter() {
     override fun getCount(): Int = userlist.size
 
@@ -33,18 +31,12 @@ class Myadpter(
 
         var textview: TextView
         var textview2: TextView
-//        var editt : ImageView
-//        var delete : ImageView
-//        var relative : RelativeLayout
         var pop: ImageView
 
         var forcontact = LayoutInflater.from(homePage).inflate(R.layout.forcontact, p2, false)
 
         textview = forcontact.findViewById(R.id.textview)
         textview2 = forcontact.findViewById(R.id.textview2)
-//        editt=forcontact.findViewById(R.id.edit)
-//        delete=forcontact.findViewById(R.id.delete)
-//        relative=forcontact.findViewById(R.id.relative)
         pop = forcontact.findViewById(R.id.pop)
 
         var dialog = Dialog(homePage)
@@ -52,7 +44,9 @@ class Myadpter(
         var editcontact: EditText
         var editemail: EditText
         var update: Button
+
         var udaat = userlist.get(position)
+
         pop.setOnClickListener {
 
             Log.e("===", "getView: bgbbgh")
@@ -76,13 +70,10 @@ class Myadpter(
                         update = dialog.findViewById(R.id.update)
 
 
-
                         editname.setText(udaat.name)
                         editcontact.setText(udaat.contact)
+                        editemail.setText(udaat.email)
 
-
-
-//                        editemail.setText(emailarray[position])
 //            val animation: Animation =
 //                AnimationUtils.loadAnimation(homePage, R.anim.updateanim)
 //            animation.duration = 1000
@@ -114,9 +105,11 @@ class Myadpter(
                         userlist.removeAt(position)
                         del.delete(position)
                         notifyDataSetChanged()
+
                     }
                 }
                 true
+
             }
             popupmenu.show()
         }
@@ -124,7 +117,6 @@ class Myadpter(
         textview2.setText(udaat.contact)
         return forcontact
     }
-
 }
 
 
